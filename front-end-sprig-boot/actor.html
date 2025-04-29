@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Actores - Panel de Administración</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/front-end-sprig-boot/css/actor.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Notificación de Toast -->
+    <div class="toast-container">
+        <div class="toast success" id="toast-success">
+            <div class="toast-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-content" id="toast-success-message">
+                Operación realizada con éxito
+            </div>
+            <div class="toast-close" onclick="hideToast('toast-success')">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="toast error" id="toast-error">
+            <div class="toast-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="toast-content" id="toast-error-message">
+                Ha ocurrido un error
+            </div>
+            <div class="toast-close" onclick="hideToast('toast-error')">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">
+                <i class="fas fa-user-tie"></i>
+                Gestión de Actores
+            </h1>
+            <button class="back-button" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i> Volver al Dashboard
+            </button>
+        </div>
+        
+        <!-- Add Actor Form -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title" id="form-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Agregar Actor
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="actor-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">Nombre</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Nombre del actor" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Apellido</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Apellido del actor" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="country">País</label>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="País de origen" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-danger" id="cancel-btn" style="display: none;">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Cargar datos de ejemplo -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fas fa-database"></i>
+                    Datos de ejemplo
+                </div>
+            </div>
+            <div class="card-body">
+                <button id="load-sample-data" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Cargar datos de ejemplo
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search and Actors List -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fas fa-list"></i>
+                    Lista de Actores
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Barra de búsqueda -->
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" class="search-input" placeholder="Buscar actores...">
+                        <button id="search-btn" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="search-filters">
+                        <label class="search-filter">
+                            <input type="radio" name="search-filter" value="all" checked>
+                            <span>Todos</span>
+                        </label>
+                        <label class="search-filter">
+                            <input type="radio" name="search-filter" value="name">
+                            <span>Nombre</span>
+                        </label>
+                        <label class="search-filter">
+                            <input type="radio" name="search-filter" value="country">
+                            <span>País</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Resultados de búsqueda y contador -->
+                <div class="search-results-info">
+                    <span id="actors-count">0 actores encontrados</span>
+                    <button id="clear-search" class="btn btn-sm btn-secondary" style="display: none;">
+                        <i class="fas fa-times"></i> Limpiar búsqueda
+                    </button>
+                </div>
+                
+                <!-- Lista de actores -->
+                <div id="actors-list">
+                    <!-- Los actores se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/front-end-sprig-boot/js/actor.js"></script>
+    
+    <script>
+        // Esta función debe estar disponible de manera global
+        // para que los botones de edición funcionen correctamente
+        window.editActor = editActor;
+        window.deleteActor = deleteActor;
+        window.hideToast = function(id) {
+            document.getElementById(id).classList.remove('show');
+        };
+    </script>
+</body>
+</html>

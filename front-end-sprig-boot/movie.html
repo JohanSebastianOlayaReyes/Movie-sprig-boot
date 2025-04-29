@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Películas</title>
+    <link rel="stylesheet" href="/front-end-sprig-boot/css/movie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Catálogo de Películas</h1>
+            <nav>
+                <button id="btnShowList" class="active">Ver Todas</button>
+                <button id="btnShowForm">Añadir Película</button>
+            </nav>
+        </header>
+
+        <!-- Sección de listado de películas -->
+        <section id="movieList" class="section-content">
+            <h2>Listado de Películas</h2>
+            
+            <!-- Barra de búsqueda -->
+            <div class="search-container">
+                <input type="number" id="searchInput" placeholder="Buscar película por ID" min="1">
+                <button id="btnSearch" class="search-button">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+            </div>
+            
+            <div id="movieGrid" class="movie-grid">
+                <!-- Aquí se cargarán dinámicamente las películas -->
+                <div class="loading">Cargando películas...</div>
+            </div>
+        </section>
+
+        <!-- Sección de detalles de película -->
+        <section id="movieDetail" class="section-content hidden">
+            <h2>Detalles de la Película</h2>
+            <div id="detailContent" class="detail-card">
+                <!-- Aquí se cargarán los detalles de la película seleccionada -->
+            </div>
+            <button id="btnBackToList" class="back-button">Volver</button>
+        </section>
+
+        <!-- Formulario para añadir películas -->
+        <section id="movieForm" class="section-content hidden">
+            <h2 id="formTitle">Añadir Nueva Película</h2>
+            <form id="addMovieForm">
+                <!-- Campo oculto para el ID en caso de actualización -->
+                <input type="hidden" id="movieId">
+                
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="director">Director:</label>
+                    <input type="text" id="director" name="director" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Género:</label>
+                    <input type="text" id="genre" name="genre" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-button" id="btnSubmit">Guardar</button>
+                    <button type="button" id="btnCancelForm" class="cancel-button">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script src="/front-end-sprig-boot/js/movie.js"></script>
+</body>
+</html>

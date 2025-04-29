@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Géneros - Panel de Administración</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/front-end-sprig-boot/css/Genre.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">
+                <i class="fas fa-theater-masks"></i>
+                Gestión de Géneros
+            </h1>
+            <button class="back-button" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i> Volver al Dashboard
+            </button>
+        </div>
+        
+        <!-- Alerts -->
+        <div class="alert alert-success" id="alert-success">
+            <i class="fas fa-check-circle"></i> Operación realizada con éxito.
+        </div>
+        
+        <div class="alert alert-danger" id="alert-danger">
+            <i class="fas fa-exclamation-circle"></i> Ha ocurrido un error.
+        </div>
+        
+        <!-- Add Genre Button -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Añadir nuevo género
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="add-genre-form">
+                    <div class="form-group">
+                        <label class="form-label" for="genre-name">Nombre del género</label>
+                        <input type="text" class="form-control" id="genre-name" placeholder="Ej: Acción, Comedia, Drama..." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Género
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Genres List -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fas fa-list"></i>
+                    Lista de Géneros
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="genres-list">
+                            <!-- Los géneros se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Genre Modal -->
+    <div class="modal" id="edit-genre-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Editar Género</h2>
+                <span class="close-modal" id="close-edit-modal">&times;</span>
+            </div>
+            
+            <form id="edit-genre-form">
+                <input type="hidden" id="edit-genre-id">
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-genre-name">Nombre</label>
+                    <input type="text" class="form-control" id="edit-genre-name" required>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="cancel-edit">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="/front-end-sprig-boot/js/Genre.js"></script>
+
+</body>
+</html>    

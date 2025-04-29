@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración de Películas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/front-end-sprig-boot/css/estilos.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="brand">
+        <i class="fas fa-film logo-icon"></i>
+        <span>Movie Admin</span>
+    </div>
+    
+    <div class="menu">
+        <a href="index.html" class="menu-item active" data-section="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-title">Gestión</div>
+        
+        <a href="admin.html" class="menu-item" data-section="admin">
+            <i class="fas fa-user-shield"></i>
+            <span>Administradores</span>
+        </a>
+        
+        <a href="movie.html" class="menu-item" data-section="movies">
+            <i class="fas fa-film"></i>
+            <span>Películas</span>
+        </a>
+        
+        <a href="genre.html" class="menu-item" data-section="genres">
+            <i class="fas fa-theater-masks"></i>
+            <span>Géneros</span>
+        </a>
+        
+        <a href="actor.html" class="menu-item" data-section="actors">
+            <i class="fas fa-user-tie"></i>
+            <span>Actores</span>
+        </a>
+        
+        <a href="ActorMovie.html" class="menu-item" data-section="ActorMovie">
+            <i class="fas fa-project-diagram"></i>
+            <span>Actor-Películas</span>
+        </a>
+        
+        <div class="menu-title">Cuenta</div>
+        
+        <a class="menu-item">
+            <i class="fas fa-cog"></i>
+            <span>Configuración</span>
+        </a>
+        
+        <a class="menu-item">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Cerrar Sesión</span>
+        </a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Dashboard Section -->
+    <div id="dashboard-content">
+        <div class="header">
+            <h1 class="page-title">Dashboard</h1>
+            <div class="d-flex align-center gap-10">
+                <span id="current-date"></span>
+            </div>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card" id="admin-card" onclick="window.location.href='admin.html'">
+                <div class="stat-header">
+                    <span class="stat-title">Administradores</span>
+                    <div class="stat-icon icon-admin">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="admin-count"><span class="spinner"></span></div>
+            </div>
+            
+            <div class="stat-card" id="movie-card" onclick="window.location.href='movie.html'">
+                <div class="stat-header">
+                    <span class="stat-title">Películas</span>
+                    <div class="stat-icon icon-movies">
+                        <i class="fas fa-film"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="movie-count"><span class="spinner"></span></div>
+            </div>
+            
+            <div class="stat-card" id="actor-card" onclick="window.location.href='actor.html'">
+                <div class="stat-header">
+                    <span class="stat-title">Actores</span>
+                    <div class="stat-icon icon-actors">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="actor-count"><span class="spinner"></span></div>
+            </div>
+            
+            <div class="stat-card" id="genre-card" onclick="window.location.href='genre.html'">
+                <div class="stat-header">
+                    <span class="stat-title">Géneros</span>
+                    <div class="stat-icon icon-genre">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="genre-count"><span class="spinner"></span></div>
+            </div>
+            
+            <div class="stat-card" id="actormovie-card" onclick="window.location.href='ActorMovie.html'">
+                <div class="stat-header">
+                    <span class="stat-title">Actor-Películas</span>
+                    <div class="stat-icon icon-genre">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="actormovie-count"><span class="spinner"></span></div>
+            </div>
+        </div>
+                
+    <!-- Admin Management Section -->
+    <div id="admin-content">
+        <div class="header">
+            <h1 class="page-title">Gestión de Administradores</h1>
+            <button class="btn btn-primary" id="add-admin-btn">
+                <i class="fas fa-plus"></i> Nuevo Administrador
+            </button>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-users" style="color: var(--primary)"></i>
+                Lista de Administradores
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-list">
+                    <!-- Los administradores se cargarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Movies Section -->
+    <div id="movies-content">
+        <div class="header">
+            <h1 class="page-title">Gestión de Películas</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nueva Película
+            </button>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-film" style="color: var(--secondary)"></i>
+                Lista de Películas
+            </div>
+            <p>Sección en desarrollo. Aquí se mostrarán las películas.</p>
+        </div>
+    </div>
+    
+    <!-- Genres Section -->
+    <div id="genres-content">
+        <div class="header">
+            <h1 class="page-title">Gestión de Géneros</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Género
+            </button>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-theater-masks" style="color: var(--danger)"></i>
+                Lista de Géneros
+            </div>
+            <p>Sección en desarrollo. Aquí se mostrarán los géneros.</p>
+        </div>
+    </div>
+    
+    <!-- Actors Section -->
+    <div id="actors-content">
+        <div class="header">
+            <h1 class="page-title">Gestión de Actores</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Actor
+            </button>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-user-tie" style="color: var(--warning)"></i>
+                Lista de Actores
+            </div>
+            <p>Sección en desarrollo. Aquí se mostrarán los actores.</p>
+        </div>
+    </div>
+    
+    <!-- Actor-Movies Section -->
+    <div id="actor-movies-content">
+        <div class="header">
+            <h1 class="page-title">Gestión de Actor-Películas</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nueva Relación
+            </button>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-project-diagram" style="color: var(--dark)"></i>
+                Relaciones Actor-Película
+            </div>
+            <p>Sección en desarrollo. Aquí se mostrarán las relaciones entre actores y películas.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Admin Modal -->
+<div class="modal" id="admin-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="modal-title">Añadir Administrador</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        
+        <form id="admin-form">
+            <input type="hidden" id="admin-id">
+            
+            <div class="form-group">
+                <label class="form-label" for="admin-name">Nombre</label>
+                <input type="text" class="form-control" id="admin-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="admin-password">Contraseña</label>
+                <input type="password" class="form-control" id="admin-password" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="admin-email">Email</label>
+                <input type="email" class="form-control" id="admin-email" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="admin-phone">Teléfono</label>
+                <input type="text" class="form-control" id="admin-phone" required>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="cancel-admin">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="save-admin">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/front-end-sprig-boot/js/js.js"></script>
+</body>
+</html>    

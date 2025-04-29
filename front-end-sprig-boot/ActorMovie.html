@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Actor-Película</title>
+    <link rel="stylesheet" href="/front-end-sprig-boot/css/ActorMovie.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestión de Relaciones Actor-Película</h1>
+            <div class="nav-buttons">
+                <button id="btnShowList" class="active">Ver Relaciones</button>
+                <button id="btnShowForm">Añadir Relación</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Lista de relaciones Actor-Movie -->
+        <section id="relationList">
+            <div class="search-bar">
+                <input type="number" id="searchInput" placeholder="Buscar por ID">
+                <button id="btnSearch">Buscar</button>
+            </div>
+            <div id="relationGrid" class="relation-grid">
+                <!-- Las tarjetas se generarán dinámicamente -->
+            </div>
+        </section>
+        
+        <!-- Detalles de una relación -->
+        <section id="relationDetail" class="hidden">
+            <div class="detail-container">
+                <div class="detail-header">
+                    <h2>Detalles de la Relación</h2>
+                    <button id="btnBackToList">Volver</button>
+                </div>
+                <div id="detailContent" class="detail-content">
+                    <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Formulario para añadir/editar relación -->
+        <section id="relationForm" class="hidden">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 id="formTitle">Añadir Nueva Relación</h2>
+                    <button id="btnCancelForm">Cancelar</button>
+                </div>
+                <form id="addRelationForm">
+                    <input type="hidden" id="relationId">
+                    
+                    <div class="form-group">
+                        <label for="actorId">ID del Actor:</label>
+                        <input type="number" id="actorId" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="movieId">ID de la Película:</label>
+                        <input type="number" id="movieId" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="papel">Papel:</label>
+                        <input type="text" id="papel" required>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit" id="btnSubmit" class="submit-button">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/front-end-sprig-boot/js/ActorMovie.js"></script>
+</body>
+</html>
